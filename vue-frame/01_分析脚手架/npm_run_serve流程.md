@@ -17,3 +17,4 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;借助render()函数来导入模板,其可以接收参数,并且需要返回可以精简到第二张图
 ![](images/2023-03-26-16-07-13.png)
 ![](images/2023-03-26-16-07-23.png)
+![](images/2023-03-26-16-10-25.png)
