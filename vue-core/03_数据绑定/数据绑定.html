@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定</title>
+    <style></style>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<!-- 
+    Vue两种数据绑定方式：
+        1.单向绑定(v-bind):数据由vue.data流向h5元素
+        2.双向绑定(v-module):数据在vue.data和h5元素之间双向流动
+        注：
+            双向绑定一般应用于表单类元素上(如input、select等)
+            v-module:value 可以简写为 v-module，因为v-module默认收集value的值
+                例如<input type="text" v-model="name">
+ -->
+<body>
+    <div id="root">
+        <!-- v-bind:单向绑定，vue.data中的值改变这里也会跟着变 -->
+        单向数据绑定:<input type="text" v-bind:value="name"><br/>
+        <!-- v-module:双向绑定，数据和vue.data中的值互相影响 -->
+        双向数据绑定:<input type="text" v-model:value="name"><br/>
+        <!-- 简写 -->
+        单向数据绑定:<input type="text" :value="name"><br/>
+        双向数据绑定:<input type="text" v-model="name">
+
+
+        <!-- 下面这行代码错误，因为v-module只能用在表单类元素(输入类元素)上，即有value值 -->
+        <h2 v-module:xx="name">错误示例</h2>
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                name:"Vue"
+            }
+        })
+    </script>
+</body>
+</html>

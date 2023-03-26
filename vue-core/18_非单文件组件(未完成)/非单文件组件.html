@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style></style>
+    <script type="text/javascript" src="../js//vue.js"></script>
+</head>
+<body>
+    <div id='root'>
+        <xiaoming></xiaoming>
+        <xuexiao></xuexiao>
+    </div>
+
+    <script>
+        //一、创建组件
+        //创建学生组件
+        const student = Vue.extend({
+            template:`
+                <div>
+                    <h1>学生信息:姓名:{{name}},年龄:{{age}}</h1>
+                    <button @click="show">点击显示姓名</button>
+                </div>
+            `,
+            data(){
+                return{
+                    name:'张三',
+                    age:18
+                } 
+            },
+            methods:{
+                show(){
+                    window.alert(this.name);
+                }
+            }
+        })
+        //创建学校组件
+        const school = Vue.extend({
+            template:`
+                <div>
+                    <h1>学校信息:姓名:{{name}},年龄:{{age}}</h1>
+                </div>
+            `,
+            data(){
+                return{
+                    name:'张三学校',
+                    age:18
+                } 
+            }
+        })
+        
+        //二、注册组件
+        //全局注册：
+        Vue.component('student',student)
+        //局部注册:
+        new Vue({
+            el:"#root",
+            //components中的key为组件之后的名字，value式定义的组件
+            components:{
+                xiaoming:student,
+                xuexiao:school
+            }
+        })
+    </script>
+</body>
+</html>

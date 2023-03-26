@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style></style>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id='root'>
+        n:{{n}}<button @click="add">n+1</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:"#root",
+            data:{n:1},
+            methods:{
+                add(){this.n++;}
+            },
+
+            // 此阶段为初始化1：生命周期、事件(数据代理还未开始)
+            /*
+                此时无法访问到data、methods中的属性和方法
+            */
+            beforeCreate(){
+                console.log("beforeCreate");
+                //console.log(this)
+                //debugger;//调试，代码卡在这里
+            },
+
+            //此阶段为初始化2：数据监测、数据代理
+            /*
+                此时可以通过Vue对象访问到data、methods中的数据和方法
+            */
+            created(){
+                console.log("created");
+                //console.log(this);
+                //debugger;
+            },
+
+            //此阶段Vue开始解析模板，生成虚拟DOM，页面还不能显示解析好的内容
+            /*
+                此时，页面呈现的是未经Vue编译的DOM结构；
+                此时，对DOM的任何操作都无效，因为之后会将虚拟DOM变为真实DOM
+                覆盖掉此时的操作
+            */
+            beforeMount(){
+                console.log("beforeMount");
+                //debugger;
+            },
+
+            //此阶段初始化阶段结束，Vue将虚拟DOM转化为真实DOM插入页面，并将虚拟DOM存在了vm.$el上
+            /*
+                此时，页面呈现的就是经过Vue编译的DOM
+                此时VUE对DOM的操作都有效，因为虚拟DOM已经变为了真实DOM，不会重新修改
+                    但是应该尽量避免，VUE操作完DOM，自己反手改掉，没有意义
+                在mounted()函数中一般做：
+                    开启定时器
+                    发送网络请求
+                    订阅消息
+                    绑定自定义事件等初始化操作
+            */
+            mounted(){
+                console.log("mounted");
+                //debugger;
+            },
+
+            /*
+                此阶段数据更新，但是虚拟DOM和真实DOM还未更新
+            */
+            beforeUpdate(){
+                console.log("beforeUpdate")
+            },
+
+            /*
+                此阶段数据、虚拟DOM、真实DOM都更新
+            */
+           updated(){
+                console.log("updated")
+           }
+        })
+    </script>
+</body>
+</html>

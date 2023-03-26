@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style></style>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id='root'>
+        <!-- v-on:click 表示点击时触发事件 -->
+        <button v-on:click="showInfo">点击触发信息</button>
+
+        <!-- v-on:click可以简写成@click -->
+        <!-- 传递参数可以直接写个()，将参数写在()里 -->
+        <button @click="getParam(66)">参数获取</button>
+
+        <!-- 传递参数之后envent会被覆盖，使用$event占位符可以保留 -->
+        <button @click="getParam2(66,$event)">参数获取</button>
+    </div>
+    <script>
+        const vm =new Vue({
+            el:"#root",
+            data:{
+            },
+            methods:{
+                // 默认传入一个参数，就是触发该函数的事件对象，在本例中为点击事件
+                showInfo(event){
+                    //event.target表示触发事件的元素，即button标签
+                    console.log(event.target)
+                    console.log(this)//this就是vm对象，不能写成箭头函数
+                },
+
+                //默认参数会被直接替换
+                getParam(num){
+                    console.log(num)
+                },
+                //默认参数被保留
+                getParam2(num,event){
+                    console.log(num,event)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

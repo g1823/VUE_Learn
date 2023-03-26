@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style></style>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+<body>
+    <!-- 准备一个容器 -->
+    <div id="root">
+        
+        <h1>Hello,{{name}}!</h1>
+        <h1>年龄:{{age}}</h1>
+    </div>
+    <script type="text/javascript">
+        //阻止Vue在启动时生成生产提示
+        Vue.config.productionTip = false
+        //创建Vue实例
+        const x = new Vue({
+            //值通常为css的id选择器，用于指定当前vue实例与哪个容器绑定
+            el:'#root',//即这种写法的简写：document.getElementById('root')
+            data:{//用于存储数据，其供el标签所指的标签使用，此处暂时写成对象(写死)，之后改为函数
+                name:'Vue',
+                age:18
+            }
+        })
+        
+    </script>
+</body>
+</html>

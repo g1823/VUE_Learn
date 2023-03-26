@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style></style>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id='root'>
+        <a href="http://www.baidu.com" @click="test">事件修饰符</a>
+        <a href="http://www.baidu.com" @click.prevent="test">事件修饰符2</a>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:"#root",
+            methods:{
+                test(event){
+                    //使用event的preventDefault()方法可以阻止默认行为
+                    //event.preventDefault()
+                    alert("事件被触发")
+                }
+            }
+        })
+    </script>
+</body>
+</html>
