@@ -7,7 +7,7 @@
             <!-- <li v-for="m in mslist" :key="m.id" ><router-link :to="'/school/schoolChild/detail?id=${m.id}&name=${m.name}'">消息{{ m.id }}</router-link></li> -->
             <!-- 跳转路由携带query参数,to的对象写法 -->
             <li v-for="m in mslist" :key="m.id" >
-                <router-link :to="{
+                <router-link :replace="true" :to="{
                     //使用name
                     name:'xiangqing',
                     // path:'/school/schoolChild/detail',

@@ -23,6 +23,8 @@ Vue.use(ElementUI)
 new Vue({
   el:"#app",
   render: h => h(App),
-  //给vue配置自己的路由
-  router:router
+  router:router,
+  beforeCreate(){
+      Vue.prototype.$bus = this
+  }
 })

@@ -1,8 +1,8 @@
 <template>
     <div>
         <ul>
-            <li>消息编号:{{ $route.query.id }}</li>
-            <li>消息内容:{{ $route.query.name }}</li>
+            <li>消息编号:{{ id }}</li>
+            <li>消息内容:{{ name }}</li>
 
         </ul>
     </div>
@@ -11,8 +11,9 @@
 <script>
     export default {
         name: 'Detail',
+        props:['id','name'],
         mounted(){
-            console.log(this)
+            //console.log(this)
         }
     }
 </script>
