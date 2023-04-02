@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>localStorage</title>
+    <style></style>
+</head>
+
+<body>
+    <div id='root'>
+        <button onclick="savedata()">点击向localStorage保存信息</button>
+        <button onclick="readdata()">点击读取数据</button>
+        <button onclick="deletedata()">点击删除数据</button>
+    </div>
+    <script>
+        let p = {
+            name: '张三',
+            age: 18
+        }
+        function savedata() {
+            //key和value都是字符串，数值类型会自动转换成字符串
+            localStorage.setItem('msg', 'hello')
+            //只要第二个参数，即value不是string类型，会自动调用传入对象的toString()方法
+            localStorage.setItem('person',p)
+            localStorage.setItem('person2', JSON.stringify(p))
+        }
+        function readdata(){
+            let obj = localStorage.getItem('person2')
+            console.log(obj)
+        }
+        function deletedata(){
+            localStorage.removeItem('msg')
+        }
+        function deleteAlldata(){
+            localStorage.clear()
+        }
+    </script>
+</body>
+
+</html>

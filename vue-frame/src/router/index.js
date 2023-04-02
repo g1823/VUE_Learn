@@ -7,18 +7,21 @@ import SchoolChild from '../pages/schoolChild'
 import Detail from '../pages/detail'
 
 //创建router对象(路由器)，并暴露出去
-export default new VueRouter({
+const router = new VueRouter({
     //在routes中创建路径和组件的kv关系
     routes: [
         {
+            name: 'xuesheng',
             path: '/student',
             component: Studnet
         },
         {
+            name: "xuexiao",
             path: '/school',
             component: School,
             children: [
                 {
+                    name: "xuexiao1",
                     path: 'schoolChild',
                     component: SchoolChild,
                     children: [
@@ -45,3 +48,21 @@ export default new VueRouter({
         }
     ]
 })
+
+//全局前置路由守卫
+//表示每一次路由切换之前都会调用参数里的函数(初始化时也会)
+router.beforeEach((to, from, next) => {
+    /*
+        该函数有三个参数：
+            to:表示即将跳转的路由，目的路由
+            from:表示来自哪个路由，当前路由
+            next:是一个函数，表示放行
+    */
+    //这样就可以动态判断是否放行
+    //下面是从localStorage中判断
+    // if (localStorage.getItem('user') === '张三') {
+    //     next()
+    // }
+})
+
+export default router

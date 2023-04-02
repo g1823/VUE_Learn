@@ -2,10 +2,14 @@
 import Vue from 'vue'
 //引入父组件App.vue
 import App from './App.vue'
+
 //引入路由router
 import VueRouter from 'vue-router'
 //引入自己创建的路由器
 import router from './router/index'
+
+//引入store
+import store from '@/store/index'
 
 //引入ElemnetUI组件库
 import ElementUI from 'element-ui'
@@ -19,10 +23,13 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 //应用ElemnetUI
 Vue.use(ElementUI)
+
+
 //创建Vue实例
 new Vue({
   el:"#app",
   render: h => h(App),
+  store,
   router:router,
   beforeCreate(){
       Vue.prototype.$bus = this

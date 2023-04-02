@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style></style>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id='root'>
+        <h3>{{d}}</h3><br>
+        <button @click="changed">点击修改上面数字</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: "#root",
+            data() {
+                return {
+                    d: 1
+                }
+            },
+            methods: {
+                changed() {
+                    this.d++;
+                }
+            },
+            watch: {
+                //d表示被监听的属性
+                d: {
+                    //immeditate为true表示被监视的属性在初始化时，就调用一次handler方法
+                    immeditate: true,
+                    //handler会在被监视的属性发生变化时调用，newValue, oldValue分别代表新值和旧值
+                    handler(newValue, oldValue) {
+                        console.log("d被修改")
+                        console.log("旧值：" + oldValue)
+                        console.log("新值：" + newValue)
+                    }
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>
